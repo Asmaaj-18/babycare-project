@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  role      Role
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  babies    Baby[]    @relation("ParentBabies")
+  comments  Comment[]
+}
+
+model Baby {
+  id        String    @id @default(uuid())
+  name      String
+  birthDate DateTime
+  gender    String?
+  parentId  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  parent    User      @relation("ParentBabies", fields: [parentId], references: [id], onDelete: Cascade)
+  comments  Comment[]
+  growth    Growth[]
+  sleep     Sleep[]
+  vaccines  Vaccine[]
+}
+
+model Sleep {
+  id        String   @id @default(uuid())
+  startTime DateTime
+  endTime   DateTime
+  note      String?
+  babyId    String
+  createdAt DateTime @default(now())
+  baby      Baby     @relation(fields: [babyId], references: [id], onDelete: Cascade)
+}
+
+model Vaccine {
+  id        String        @id @default(uuid())
+  name      String
+  date      DateTime
+  status    VaccineStatus @default(PENDING)
+  note      String?
+  babyId    String
+  createdAt DateTime      @default(now())
+  baby      Baby          @relation(fields: [babyId], references: [id], onDelete: Cascade)
+}
+
+model Growth {
+  id        String   @id @default(uuid())
+  weight    Float
+  height    Float
+  headSize  Float?
+  babyId    String
+  createdAt DateTime @default(now())
+  baby      Baby     @relation(fields: [babyId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  babyId    String
+  authorId  String
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  baby      Baby     @relation(fields: [babyId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  PARENT
+  DOCTOR
+}
+
+enum VaccineStatus {
+  PENDING
+  DONE
+  MISSED
+}
