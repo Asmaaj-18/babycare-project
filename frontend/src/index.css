@@ -2,7 +2,7 @@
 
 /* 🔎 IMPORTANT pour la production */
 @source "./index.html";
-@source "./src/**/*.{js,ts,jsx,tsx}";
+@source "./src";
 
 /* 🌍 Base globale */
 html, body, #root {
