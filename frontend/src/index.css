@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* 🔎 IMPORTANT pour la production */
+@source "./index.html";
+@source "./src/**/*.{js,ts,jsx,tsx}";
+
 /* 🌍 Base globale */
 html, body, #root {
   height: 100%;
