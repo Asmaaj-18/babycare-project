@@ -1,8 +1,6 @@
-@import "tailwindcss";
-
-/* 🔎 IMPORTANT pour la production */
-@source "./index.html";
-@source "./src";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* 🌍 Base globale */
 html, body, #root {
