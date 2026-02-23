@@ -23,20 +23,20 @@ const AddVaccinePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-md border border-primary/20 w-full max-w-lg">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full max-w-lg">
 
-        <h1 className="text-2xl font-bold text-primary mb-6">
-          💉 Add Vaccine
+        <h1 className="text-2xl font-bold text-blue-600 mb-6">
+          💉 Ajouter un vaccin
         </h1>
 
         <VaccineForm onSubmit={handleSubmit} />
 
         <button
           onClick={() => navigate(-1)}
-          className="mt-4 text-primary hover:underline"
+          className="mt-6 text-blue-600 hover:text-blue-800 font-medium transition"
         >
-          Cancel
+          Annuler
         </button>
 
       </div>

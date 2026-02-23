@@ -17,14 +17,22 @@ export interface AuthResponse {
   };
 }
 
+// 📝 REGISTER
 export const register = async (
   data: RegisterData
 ): Promise<AuthResponse> => {
   const res = await api.post("/auth/register", data);
-  localStorage.setItem("accessToken", res.data.accessToken);
+
+  // 🔐 Sauvegarde token
+  localStorage.setItem("accessToken", res.data.token);
+
+  // 👤 Sauvegarde user
+  localStorage.setItem("user", JSON.stringify(res.data.user));
+
   return res.data;
 };
 
+// 🔑 LOGIN
 export const login = async (
   email: string,
   password: string
@@ -34,6 +42,11 @@ export const login = async (
     password,
   });
 
+  // 🔐 Sauvegarde token
+  localStorage.setItem("accessToken", res.data.token);
+
+  // 👤 Sauvegarde user
+  localStorage.setItem("user", JSON.stringify(res.data.user));
+
   return res.data;
 };
-

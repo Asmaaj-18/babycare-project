@@ -7,11 +7,10 @@ const AddSleepPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (data: {
-  startTime: string;
-  endTime: string;
-  note?: string;
-}) => {
-
+    startTime: string;
+    endTime: string;
+    note?: string;
+  }) => {
     if (!id) return;
 
     await createSleep({
@@ -23,13 +22,15 @@ const AddSleepPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-primary mb-6">
-          ➕ Add Sleep Record
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full max-w-lg">
+
+        <h1 className="text-2xl font-bold text-blue-600 mb-6">
+          ➕ Ajouter un enregistrement de sommeil
         </h1>
 
         <SleepForm onSubmit={handleSubmit} />
+
       </div>
     </div>
   );

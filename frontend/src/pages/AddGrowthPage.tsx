@@ -7,11 +7,10 @@ const AddGrowthPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (data: {
-  height: number;
-  weight: number;
-  headSize?: number;
-}) => {
-
+    height: number;
+    weight: number;
+    headSize?: number;
+  }) => {
     if (!id) return;
 
     await createGrowth({
@@ -23,13 +22,15 @@ const AddGrowthPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-lg">
-        <h1 className="text-2xl font-bold text-primary mb-6">
-          ➕ Add Growth Record
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full max-w-lg">
+
+        <h1 className="text-2xl font-bold text-blue-600 mb-6">
+          ➕ Ajouter une mesure de croissance
         </h1>
 
         <GrowthForm onSubmit={handleSubmit} />
+
       </div>
     </div>
   );

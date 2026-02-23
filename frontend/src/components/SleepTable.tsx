@@ -28,42 +28,44 @@ const SleepTable: React.FC<SleepTableProps> = ({
 }) => {
   if (sleepData.length === 0) {
     return (
-      <div className="bg-white p-6 rounded-2xl shadow-md border border-primary/20">
+      <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-200">
         <p className="text-gray-500 text-center">
-          No sleep records yet.
+          Aucun enregistrement de sommeil.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white shadow-md rounded-2xl border border-primary/20 overflow-x-auto">
+    <div className="bg-white rounded-2xl shadow-md border border-gray-200 overflow-x-auto">
 
-      <h2 className="text-xl font-semibold text-primary p-4">
+      <h2 className="text-xl font-semibold text-blue-600 p-6 border-b border-gray-200">
         😴 Sleep Records
       </h2>
 
-      <table className="w-full border-collapse">
+      <table className="w-full text-sm text-gray-700">
 
         {/* HEADER */}
-        <thead className="bg-primary text-white">
+        <thead className="bg-blue-600 text-white">
           <tr>
-            <th className="p-3 text-left">Start</th>
-            <th className="p-3 text-left">End</th>
-            <th className="p-3 text-left">Duration (hours)</th>
-            <th className="p-3 text-left">Note</th>
+            <th className="p-3 text-left font-medium">Start</th>
+            <th className="p-3 text-left font-medium">End</th>
+            <th className="p-3 text-left font-medium">Duration (hours)</th>
+            <th className="p-3 text-left font-medium">Note</th>
             {(onEdit || onDelete) && (
-              <th className="p-3 text-center">Actions</th>
+              <th className="p-3 text-center font-medium">Actions</th>
             )}
           </tr>
         </thead>
 
         {/* BODY */}
         <tbody>
-          {sleepData.map((sleep) => (
+          {sleepData.map((sleep, index) => (
             <tr
               key={sleep.id}
-              className="border-b hover:bg-gray-50 transition"
+              className={`border-b ${
+                index % 2 === 0 ? "bg-white" : "bg-gray-50"
+              } hover:bg-gray-100 transition`}
             >
               <td className="p-3">
                 {new Date(sleep.startTime).toLocaleString()}
@@ -73,7 +75,7 @@ const SleepTable: React.FC<SleepTableProps> = ({
                 {new Date(sleep.endTime).toLocaleString()}
               </td>
 
-              <td className="p-3">
+              <td className="p-3 font-medium text-blue-600">
                 {calculateDuration(
                   sleep.startTime,
                   sleep.endTime
@@ -90,7 +92,7 @@ const SleepTable: React.FC<SleepTableProps> = ({
                   {onEdit && (
                     <button
                       onClick={() => onEdit(sleep)}
-                      className="bg-secondary text-black px-3 py-1 rounded-lg hover:opacity-90 transition"
+                      className="bg-yellow-400 text-black px-3 py-1 rounded-lg text-xs font-medium hover:bg-yellow-500 transition"
                     >
                       Edit
                     </button>
@@ -99,7 +101,7 @@ const SleepTable: React.FC<SleepTableProps> = ({
                   {onDelete && (
                     <button
                       onClick={() => onDelete(sleep.id)}
-                      className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition"
+                      className="bg-red-500 text-white px-3 py-1 rounded-lg text-xs font-medium hover:bg-red-600 transition"
                     >
                       Delete
                     </button>

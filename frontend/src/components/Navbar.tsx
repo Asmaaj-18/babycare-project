@@ -11,15 +11,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-b border-gray-100 shadow-sm px-8 py-4 flex justify-between items-center">
+    <nav className="bg-white border-b border-gray-200 shadow-sm px-8 py-4 flex justify-between items-center">
 
       {/* ================= LOGO ================= */}
       <Link
         to={user?.role === "DOCTOR" ? "/doctor-dashboard" : "/parent-dashboard"}
-        className="flex flex-col"
+        className="flex flex-col group"
       >
-        <span className="text-lg font-semibold text-primary tracking-tight">
-          Baby Health Tracker
+        <span className="text-lg font-bold text-blue-600 tracking-tight group-hover:text-blue-700 transition">
+          🍼 Baby Health Tracker
         </span>
         <span className="text-xs text-gray-400">
           Medical Monitoring Platform
@@ -32,11 +32,11 @@ const Navbar = () => {
 
           {/* User Info */}
           <div className="text-right">
-            <p className="text-sm text-gray-400">
+            <p className="text-xs text-gray-400">
               Connecté en tant que
             </p>
 
-            <p className="text-sm font-semibold text-primary">
+            <p className="text-sm font-semibold text-gray-800">
               {user.role === "DOCTOR" ? "Dr. " : ""}
               {user.name}
             </p>
@@ -44,10 +44,10 @@ const Navbar = () => {
 
           {/* Role Badge */}
           <span
-            className={`px-4 py-1 text-xs font-medium rounded-full ${
+            className={`px-4 py-1 text-xs font-semibold rounded-full ${
               user.role === "DOCTOR"
-                ? "bg-secondary/30 text-black"
-                : "bg-primary/10 text-primary"
+                ? "bg-yellow-100 text-yellow-700"
+                : "bg-blue-100 text-blue-700"
             }`}
           >
             {user.role === "DOCTOR" ? "Médecin" : "Parent"}
@@ -56,7 +56,7 @@ const Navbar = () => {
           {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 text-gray-600 hover:bg-gray-50 transition"
+            className="px-4 py-2 rounded-xl text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
           >
             Déconnexion
           </button>

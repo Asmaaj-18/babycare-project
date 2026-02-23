@@ -42,9 +42,7 @@ const ParentDashboard = () => {
 
   const handleDelete = async (id: string) => {
     await deleteBaby(id);
-    setBabies((prev) =>
-      prev.filter((b) => b.id !== id)
-    );
+    setBabies((prev) => prev.filter((b) => b.id !== id));
   };
 
   if (loading)
@@ -58,12 +56,12 @@ const ParentDashboard = () => {
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-background p-10 max-w-6xl mx-auto">
+      <div className="min-h-screen bg-gray-100 p-10 max-w-6xl mx-auto">
 
         {/* ================= HEADER ================= */}
         <div className="mb-12">
 
-          <h1 className="text-3xl font-bold text-primary mb-2">
+          <h1 className="text-3xl font-bold text-blue-600 mb-2">
             Espace Parent
           </h1>
 
@@ -71,7 +69,7 @@ const ParentDashboard = () => {
             Gérez et consultez le suivi médical de votre enfant
           </p>
 
-          <div className="w-20 h-1 bg-secondary mt-4 rounded-full"></div>
+          <div className="w-20 h-1 bg-yellow-400 mt-4 rounded-full"></div>
 
         </div>
 
@@ -80,7 +78,7 @@ const ParentDashboard = () => {
 
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-primary text-white px-6 py-2 rounded-xl shadow-md hover:opacity-90 transition font-medium"
+            className="bg-blue-600 text-white px-6 py-2 rounded-xl shadow-md hover:bg-blue-700 transition font-medium"
           >
             {showForm ? "Annuler" : "Ajouter un enfant"}
           </button>
@@ -89,8 +87,8 @@ const ParentDashboard = () => {
 
         {/* ================= FORM SECTION ================= */}
         {showForm && (
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10 mb-10">
-            <h2 className="text-lg font-semibold text-primary mb-6">
+          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 mb-10">
+            <h2 className="text-lg font-semibold text-blue-600 mb-6">
               Informations de l’enfant
             </h2>
 
@@ -99,10 +97,10 @@ const ParentDashboard = () => {
         )}
 
         {/* ================= BABY LIST SECTION ================= */}
-        <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10">
+        <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
 
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold text-primary">
+            <h2 className="text-xl font-semibold text-blue-600">
               Enfants enregistrés
             </h2>
 

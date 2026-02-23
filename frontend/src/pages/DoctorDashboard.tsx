@@ -34,22 +34,19 @@ const DoctorDashboard = () => {
       </div>
     );
 
-  // ================= STATS =================
-
   const totalPatients = babies.length;
   const activePatients = babies.length;
-  
 
   return (
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-background p-10 max-w-6xl mx-auto">
+      <div className="min-h-screen bg-gray-100 p-10 max-w-6xl mx-auto">
 
         {/* ================= HEADER ================= */}
         <div className="mb-10">
 
-          <h1 className="text-3xl font-bold text-primary mb-2">
+          <h1 className="text-3xl font-bold text-blue-600 mb-2">
             Tableau de bord médical
           </h1>
 
@@ -57,7 +54,7 @@ const DoctorDashboard = () => {
             Consultation et gestion des dossiers patients
           </p>
 
-          <div className="w-20 h-1 bg-secondary mt-4 rounded-full"></div>
+          <div className="w-20 h-1 bg-yellow-400 mt-4 rounded-full"></div>
 
           <div className="flex items-center justify-between mt-6">
             <div>
@@ -65,12 +62,12 @@ const DoctorDashboard = () => {
                 Connecté en tant que
               </p>
 
-              <p className="text-lg font-semibold text-primary">
+              <p className="text-lg font-semibold text-blue-600">
                 Dr. {user?.name}
               </p>
             </div>
 
-            <span className="px-4 py-1 text-sm rounded-full bg-secondary/30 text-black font-medium">
+            <span className="px-4 py-1 text-sm rounded-full bg-yellow-200 text-yellow-800 font-medium">
               Médecin
             </span>
           </div>
@@ -90,15 +87,13 @@ const DoctorDashboard = () => {
             value={activePatients}
           />
 
-
-
         </div>
 
         {/* ================= PATIENT LIST ================= */}
-        <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10">
+        <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
 
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold text-primary">
+            <h2 className="text-xl font-semibold text-blue-600">
               Dossiers patients
             </h2>
 
@@ -138,6 +133,7 @@ const DoctorDashboard = () => {
 
 export default DoctorDashboard;
 
+
 /* ================= STAT CARD ================= */
 
 interface StatCardProps {
@@ -147,17 +143,17 @@ interface StatCardProps {
 
 const StatCard = ({ title, value }: StatCardProps) => {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md border border-primary/10">
+    <div className="bg-white p-6 rounded-2xl shadow-md border border-gray-200">
 
       <p className="text-sm text-gray-500 font-medium mb-3">
         {title}
       </p>
 
-      <p className="text-3xl font-bold text-primary">
+      <p className="text-3xl font-bold text-blue-600">
         {value}
       </p>
 
-      <div className="w-12 h-1 bg-secondary mt-4 rounded-full"></div>
+      <div className="w-12 h-1 bg-yellow-400 mt-4 rounded-full"></div>
 
     </div>
   );

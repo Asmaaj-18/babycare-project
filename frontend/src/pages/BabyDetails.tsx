@@ -62,8 +62,7 @@ const BabyDetails = () => {
     );
 
   const age = Math.floor(
-    (new Date().getTime() -
-      new Date(baby.birthDate).getTime()) /
+    (new Date().getTime() - new Date(baby.birthDate).getTime()) /
       (1000 * 60 * 60 * 24 * 365)
   );
 
@@ -71,18 +70,22 @@ const BabyDetails = () => {
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-gradient-to-br from-background to-white p-10 max-w-6xl mx-auto space-y-10">
+      <div className="min-h-screen bg-gray-100 p-10 max-w-6xl mx-auto space-y-10">
 
         {/* BACK BUTTON */}
         <button
-          onClick={() => navigate(-1)}
-          className="text-sm text-gray-500 hover:text-primary transition"
-        >
-          ← Retour au tableau de bord
-        </button>
+  onClick={() =>
+    navigate(user?.role === "PARENT"
+      ? "/parent-dashboard"
+      : "/doctor-dashboard")
+  }
+  className="text-sm text-gray-500 hover:text-blue-600 transition"
+>
+  ← Retour au tableau de bord
+</button>
 
-        {/* ================= PATIENT HEADER ================= */}
-        <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10">
+        {/* HEADER */}
+        <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
 
           <p className="text-sm text-gray-400 mb-2">
             Dossier médical patient
@@ -92,12 +95,12 @@ const BabyDetails = () => {
 
             <div className="flex items-center gap-6">
 
-              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-bold">
+              <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl font-bold">
                 {baby.name.charAt(0)}
               </div>
 
               <div>
-                <h1 className="text-3xl font-bold text-primary">
+                <h1 className="text-3xl font-bold text-blue-600">
                   {baby.name}
                 </h1>
 
@@ -113,7 +116,7 @@ const BabyDetails = () => {
 
             <div className="flex flex-col items-end gap-2">
 
-              <span className="px-4 py-1 rounded-full bg-secondary/30 text-black text-sm font-medium">
+              <span className="px-4 py-1 rounded-full bg-yellow-200 text-yellow-800 text-sm font-medium">
                 {baby.gender}
               </span>
 
@@ -126,7 +129,7 @@ const BabyDetails = () => {
           </div>
         </div>
 
-        {/* ================= GROWTH ================= */}
+        {/* GROWTH */}
         <SectionCard
           title="Growth Records"
           addLabel="Ajouter mesure"
@@ -142,7 +145,7 @@ const BabyDetails = () => {
           />
         </SectionCard>
 
-        {/* ================= SLEEP ================= */}
+        {/* SLEEP */}
         <SectionCard
           title="Sleep Records"
           addLabel="Ajouter sommeil"
@@ -158,7 +161,7 @@ const BabyDetails = () => {
           />
         </SectionCard>
 
-        {/* ================= VACCINES ================= */}
+        {/* VACCINES */}
         <SectionCard
           title="Vaccination"
           addLabel="Ajouter vaccin"
@@ -174,7 +177,7 @@ const BabyDetails = () => {
           />
         </SectionCard>
 
-        {/* ================= COMMENTS ================= */}
+        {/* COMMENTS */}
         <SectionCard title="Medical Notes">
           <CommentSection
             comments={baby.comments}
@@ -208,7 +211,7 @@ const BabyDetails = () => {
 
 export default BabyDetails;
 
-/* ================= REUSABLE SECTION CARD ================= */
+/* SECTION CARD */
 
 interface SectionCardProps {
   title: string;
@@ -226,17 +229,17 @@ const SectionCard = ({
   children,
 }: SectionCardProps) => {
   return (
-    <div className="bg-white p-8 rounded-2xl shadow-lg border border-primary/10">
+    <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
 
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-primary">
+        <h2 className="text-xl font-semibold text-blue-600">
           {title}
         </h2>
 
         {canAdd && (
           <button
             onClick={onAdd}
-            className="bg-primary text-white px-5 py-2 rounded-xl text-sm font-medium shadow-md hover:opacity-90 transition"
+            className="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-medium shadow-md hover:bg-blue-700 transition"
           >
             {addLabel}
           </button>
