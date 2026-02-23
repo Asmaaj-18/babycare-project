@@ -1,7 +1,7 @@
 import { Response, NextFunction } from "express";
 import { AuthRequest } from "../types/auth.types";
 
-import { prisma } from "../prisma/prisma";
+import  prisma  from "../prisma/prisma";
 
 //////////////////////////////////////////////////////
 // CREATE GROWTH

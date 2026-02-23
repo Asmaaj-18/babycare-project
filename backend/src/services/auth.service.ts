@@ -1,8 +1,8 @@
-import { PrismaClient, Role } from "@prisma/client";
+import {PrismaClient, Role}  from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const prisma = new PrismaClient();
+import prisma from "../prisma/prisma";
 
 //////////////////////////////////////////////////////
 // 🔑 GENERATE TOKENS

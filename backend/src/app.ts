@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import { prisma } from './prisma/prisma';
+import prisma  from "./prisma/prisma";
 
 // Routes
 import authRoutes from './routes/auth.routes';
@@ -24,13 +24,15 @@ const PORT = process.env.PORT || 3000;
 // GLOBAL MIDDLEWARES
 //////////////////////////////////////////////////////
 
-app.use(cors({
-  origin:"https://babycare-zeta.vercel.app/",
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://babycare-zeta.vercel.app"
+    ],
+    credentials: true
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser()); 
