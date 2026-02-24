@@ -84,6 +84,4 @@ npm run dev
 - Accédez à l’application via le frontend (Vite).
 - Utilisez les comptes de test pour explorer les fonctionnalités.
 
----
 
-Pour toute question, contactez l’équipe de développement.
