@@ -10,6 +10,9 @@ import { AuthProvider } from "./context/AuthProvider";
 import AddGrowthPage from "./pages/AddGrowthPage";
 import AddSleepPage from "./pages/AddSleepPage";
 import AddVaccinePage from "./pages/AddVaccinePage";
+import EditGrowthPage from "./pages/EditGrowthPage";
+import EditSleepPage from "./pages/EditSleepPage";
+import EditBabyPage from "./pages/EditBabyPage";
 
 function App() {
   return (
@@ -48,6 +51,12 @@ function App() {
   path="/baby/:id/add-growth"
   element={<AddGrowthPage />}
 />
+<Route
+  path="/baby/:babyId/edit-growth/:growthId"
+  element={<EditGrowthPage />}
+ />
+
+
 
             {/* Add Vaccine Record */}
 <Route
@@ -59,7 +68,14 @@ function App() {
   path="/baby/:id/add-sleep"
   element={<AddSleepPage />}
 />
-
+<Route
+  path="/baby/:babyId/edit-sleep/:sleepId"
+  element={<EditSleepPage />}
+ />
+<Route
+  path="/baby/:babyId/edit"
+  element={<EditBabyPage />}
+/>
           {/* Baby Details */}
           <Route
             path="/baby/:id"

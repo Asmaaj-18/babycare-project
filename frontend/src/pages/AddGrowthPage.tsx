@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import GrowthForm from "../components/GrowthForm";
 import { createGrowth } from "../services/growth.service";
 
+
 const AddGrowthPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();

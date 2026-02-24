@@ -7,6 +7,7 @@ interface BabyCardProps {
   gender?: string;
   onSelect: (id: string) => void;
   onDelete?: (id: string) => void;
+  onEdit?: (id: string) => void;
 }
 
 const calculateAge = (birthDate: string) => {
@@ -27,6 +28,7 @@ const BabyCard: React.FC<BabyCardProps> = ({
   gender,
   onSelect,
   onDelete,
+  onEdit,
 }) => {
   const ageInMonths = calculateAge(birthDate);
 
@@ -52,6 +54,14 @@ const BabyCard: React.FC<BabyCardProps> = ({
           View Dashboard
         </button>
 
+        {onEdit && (
+    <button
+      onClick={() => onEdit(id)}
+      className="px-3 py-1 bg-amber-500 text-white rounded-lg text-xs hover:bg-amber-600 transition"
+    >
+      ✏ Modifier
+    </button>
+        )}
         {onDelete && (
           <button
             onClick={() => onDelete(id)}

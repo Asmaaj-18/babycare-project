@@ -1,5 +1,4 @@
 # BabyCare Project
-
 ## Description
 BabyCare est une application web de suivi et gestion de la santé des bébés, permettant aux parents et aux médecins de consulter, ajouter et suivre les informations liées à la croissance, au sommeil, aux vaccins et aux commentaires.
 

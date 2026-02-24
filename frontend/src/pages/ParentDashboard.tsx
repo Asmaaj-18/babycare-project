@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import BabyCard from "../components/BabyCard";
 import BabyForm from "../components/BabyForm";
@@ -14,6 +15,8 @@ const ParentDashboard = () => {
   const [babies, setBabies] = useState<Baby[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadBabies = async () => {
@@ -58,9 +61,8 @@ const ParentDashboard = () => {
 
       <div className="min-h-screen bg-gray-100 p-10 max-w-6xl mx-auto">
 
-        {/* ================= HEADER ================= */}
+        {/* HEADER */}
         <div className="mb-12">
-
           <h1 className="text-3xl font-bold text-blue-600 mb-2">
             Espace Parent
           </h1>
@@ -70,24 +72,32 @@ const ParentDashboard = () => {
           </p>
 
           <div className="w-20 h-1 bg-yellow-400 mt-4 rounded-full"></div>
-
         </div>
 
-        {/* ================= ACTION BAR ================= */}
-        <div className="flex justify-end mb-8">
+        {/* ACTION BAR */}
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className="
+          flex items-center gap-2
+          bg-gradient-to-r from-blue-600 to-indigo-600
+          text-white 
+          px-6 py-3 
+          rounded-2xl 
+          shadow-lg 
+          hover:from-blue-700 hover:to-indigo-700
+          hover:shadow-xl 
+          transform hover:-translate-y-1 
+          transition-all duration-300 
+          font-semibold
+          "
+        >
+          <span className="text-lg">+</span>
+          {showForm ? "Annuler" : "Ajouter un enfant"}
+        </button>
 
-          <button
-            onClick={() => setShowForm(!showForm)}
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl shadow-md hover:bg-blue-700 transition font-medium"
-          >
-            {showForm ? "Annuler" : "Ajouter un enfant"}
-          </button>
-
-        </div>
-
-        {/* ================= FORM SECTION ================= */}
+        {/* FORM */}
         {showForm && (
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 mb-10">
+          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 mb-10 mt-6">
             <h2 className="text-lg font-semibold text-blue-600 mb-6">
               Informations de l’enfant
             </h2>
@@ -96,8 +106,8 @@ const ParentDashboard = () => {
           </div>
         )}
 
-        {/* ================= BABY LIST SECTION ================= */}
-        <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+        {/* BABY LIST */}
+        <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 mt-10">
 
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold text-blue-600">
@@ -122,7 +132,10 @@ const ParentDashboard = () => {
                     key={baby.id}
                     {...baby}
                     onSelect={(id: string) =>
-                      window.location.href = `/baby/${id}`
+                      navigate(`/baby/${id}`)
+                    }
+                    onEdit={(id: string) =>
+                      navigate(`/baby/${id}/edit`)
                     }
                     onDelete={handleDelete}
                   />
@@ -131,7 +144,6 @@ const ParentDashboard = () => {
             )}
 
           </div>
-
         </div>
 
       </div>

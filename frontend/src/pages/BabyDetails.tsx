@@ -137,12 +137,15 @@ const BabyDetails = () => {
           canAdd={user?.role === "PARENT" || user?.role === "DOCTOR"}
         >
           <GrowthTable
-            growthData={baby.growth}
-            onDelete={async (growthId: string) => {
-              await deleteGrowth(growthId);
-              await loadBaby();
-            }}
-          />
+  growthData={baby.growth}
+  onEdit={(growth) =>
+    navigate(`/baby/${baby.id}/edit-growth/${growth.id}`)
+  }
+  onDelete={async (growthId: string) => {
+    await deleteGrowth(growthId);
+    await loadBaby();
+  }}
+/>
         </SectionCard>
 
         {/* SLEEP */}
@@ -153,12 +156,15 @@ const BabyDetails = () => {
           canAdd={user?.role === "PARENT"}
         >
           <SleepTable
-            sleepData={baby.sleep}
-            onDelete={async (sleepId: string) => {
-              await deleteSleep(sleepId);
-              await loadBaby();
-            }}
-          />
+  sleepData={baby.sleep}
+  onEdit={(sleep) =>
+    navigate(`/baby/${baby.id}/edit-sleep/${sleep.id}`)
+  }
+  onDelete={async (sleepId: string) => {
+    await deleteSleep(sleepId);
+    await loadBaby();
+  }}
+/>
         </SectionCard>
 
         {/* VACCINES */}

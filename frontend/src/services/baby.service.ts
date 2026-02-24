@@ -5,6 +5,7 @@ export interface Baby {
   id: string;
   name: string;
   birthDate: string;
+  gender: "MALE" | "FEMALE";
 }
 
 export interface Growth {
